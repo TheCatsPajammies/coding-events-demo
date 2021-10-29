@@ -13,7 +13,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+//testComment
 @Controller
 @RequestMapping("eventCategories")
 public class EventCategoryController {
