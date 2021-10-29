@@ -1,5 +1,8 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -8,10 +11,14 @@ import java.util.Objects;
 /**
  * Created by Chris Bay
  */
-public class Event {
+@Entity
+public class Event extends AbstractEvent {
 
-    private int id;
-    private static int nextId = 1;
+//    @Id // States that this is primary key
+//    @GeneratedValue // Takes away need for the private static nextId
+//    private int id;
+
+//    private static int nextId = 1;
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -27,7 +34,7 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String contactEmail, EventType type) {
-        this();
+//        this(); // no longer needed because of @Generate
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
@@ -35,8 +42,8 @@ public class Event {
     }
 
     public Event() {
-        this.id = nextId;
-        nextId++;
+//        this.id = nextId; // These two lines are no longer needed because of @Generate
+//        nextId++;
     }
 
     public String getName() {
@@ -71,25 +78,25 @@ public class Event {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
     @Override
     public String toString() {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Event event = (Event) o;
+//        return id == event.id;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id);
+//    }
 }
